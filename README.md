@@ -7,5 +7,7 @@ Pierre Toussing
 Adli Renhoren 
 
 ## TO-DO:
+
 -Create script for automated tag generation
+
 -Create script for automated video description generation
