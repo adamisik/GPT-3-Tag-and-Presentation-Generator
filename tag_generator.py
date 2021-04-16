@@ -3,7 +3,7 @@ prompt = "Hello, today I want to show you how you can configure a template butto
 import os
 import openai
 
-openai.api_key = "sk-KngzsmcU00JLEPrtIA7pkQlmkqeGaDWQfaumCHUG"
+openai.api_key = 
 
 response = openai.Completion.create(
   engine="davinci",
