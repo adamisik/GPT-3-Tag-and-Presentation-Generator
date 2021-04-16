@@ -44,6 +44,8 @@ def generate_instructions(script, openai_key, engine="davinci", max_tokens=150):
   "Instructions:\n"\
   "1."
 
+  openai.api_key = openai_key
+
   response = openai.Completion.create(
     engine=engine,
     prompt = prompt,
@@ -55,4 +57,4 @@ def generate_instructions(script, openai_key, engine="davinci", max_tokens=150):
     stop=["###"]
   )["choices"][0]["text"]
 
-  return response
+  return "1." + response
