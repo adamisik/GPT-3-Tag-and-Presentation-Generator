@@ -7,7 +7,7 @@ text = "Hello, today I want to show you how you can configure a template button 
 API_key  = "sk-KngzsmcU00JLEPrtIA7pkQlmkqeGaDWQfaumCHUG"
 
 def description_gen(text,API_key,task,max_tokens):
-"""
+  """
   Creates a dict with tags based on a video script using the GPT-3 model of OpenAI.
   
   Args:
@@ -27,40 +27,53 @@ def description_gen(text,API_key,task,max_tokens):
   openai.api_key = API_key
 
   if task=="description":
-    prompt = text+"\n\nSummary:"
+    prompt = text+"\n\nSummary: "
     response = openai.Completion.create(
       engine="davinci-instruct-beta",
       prompt=prompt,
-      temperature=0.5,
-      max_tokens=64,
+      temperature=0.6,
+      max_tokens=max_tokens,
       top_p=1.0,
       frequency_penalty=0.0,
-      presence_penalty=0.0
-    )
+      presence_penalty=0.0)
 
-  else:
+  elif task=="tag":
     prompt = text+"\n\nKeywords: "
     response = openai.Completion.create(
     engine="davinci",
     prompt = prompt,
-    temperature=0.3,
-    max_tokens=60,
+    temperature=0.5,
+    max_tokens=max_tokens,
     top_p=1.0,
     frequency_penalty=0.8,
     presence_penalty=0.0,
     stop=["\n"])
 
+  elif task =="advertisement":
+    prompt="Write a creative ad for the following product to run on  platforms:\n\"\"\"\"\"\"\n"+text+"This is the ad I wrote for educational platforms:\n\"\"\"\"\"\"",
+    response = openai.Completion.create(
+    engine="davinci-instruct-beta",
+    prompt=prompt,
+    temperature=0.5,
+    max_tokens=max_tokens,
+    top_p=1.0,
+    frequency_penalty=0.0,
+    presence_penalty=0.0,
+    stop=["\"\"\"\"\"\""]
+    )
+
   return response
 
-
-
-tags = description_gen(text,API_key, task="tag")['choices'][0]['text']
+tags = description_gen(text,API_key, task="tag", max_tokens=80)['choices'][0]['text']
 print("Generated tags:", tags)
 
-description = description_gen(text,API_key, task="description")['choices'][0]['text']
+description = description_gen(text,API_key, task="description", max_tokens=150)['choices'][0]['text']
 print("Generated description:", description)
 
-generated_answers = {"Tags of text": tags,"Description of text": description}
+advertisement = description_gen(text,API_key, task="advertisement", max_tokens=100)['choices'][0]['text']
+print("Generated ad:", advertisement)
+
+generated_answers = {"Tags of text": tags,"Description of text": description,"Advertisement for text": advertisement}
 
 with open('answer.txt', 'w') as file:
      file.write(json.dumps(generated_answers)) # use `json.loads` to do the reverse
