@@ -4,7 +4,7 @@ import json
 
 
 text = "Hello, everyone. Welcome to this introduction of Jeff Bezos. Jeff beezus is an American intrapreneur and industrialist. He is the founder and CEO of the multinational technology company. Amazon is the richest world man in the world. He was born in Albuquerque and raised in Houston major Miami, and graduated from Princeton University. He holds a degree in electrical engineering and computer science. His first job included a wall street job in a variety of fields from 1996 to 1994. He founded Amazon in 1994. On a cross country road trip from New York to Seattle company began as a bookstore and has since expanded to a wide variety of other ecommerce products and services. Amazon's currently the world's largest online sales company, the largest internet company revenue and reports largest provider of virtual assistants and cloud infrastructure services."
-API_key  = "sk-KngzsmcU00JLEPrtIA7pkQlmkqeGaDWQfaumCHUG"
+API_key  = 
 
 def description_gen(text,API_key,task,max_tokens):
   """
