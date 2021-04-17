@@ -13,7 +13,7 @@ with open("ElonMusk.json", "r") as read_file:
    json_train_2 = json.load(read_file)
 json_train_2 = json.dumps(json_train_1)
 
-API_key  = "sk-KngzsmcU00JLEPrtIA7pkQlmkqeGaDWQfaumCHUG"
+API_key  = 
 
 
 def json_gen(text,API_key,max_tokens):
