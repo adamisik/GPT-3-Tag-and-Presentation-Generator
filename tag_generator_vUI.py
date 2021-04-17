@@ -102,5 +102,6 @@ def description_gen(text,API_key,task,max_tokens):
     frequency_penalty=1.0,
     presence_penalty=0.0,
     )
-
-  return response['choices'][0]['text']
+  
+  response = response['choices'][0]['text'].split("Text to")[0]
+  return response
