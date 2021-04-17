@@ -1,5 +1,5 @@
 # GPT-3 Hackathon - Team Zesavi
-The official repo of team Zesavi for TUM.ai's GPT-3 Hackathon. The goal of this project is to use GPT-3 to generate a title, tags, short summaries and instructions based on a transcription of an educational video. This functionality enhances the user experience on the Zesavi platform.
+The official repo of team Zesavi for TUM.ai's GPT-3 Hackathon. The goal of this project is to use GPT-3 to generate a title, tags, short summaries and instructions based on a transcription of an educational video. Furthermore, a Google Slides presentation can be generated from the video transcription. This functions enhance the user experience on the Zesavi platform.
 
 ## Description 
 Repository contains following functionalities:
@@ -14,7 +14,7 @@ Repository contains following functionalities:
 
 Functions are merged in `open_ai_utils.py`.
 
-## Team Members:
+## Team Members
 
 Adam Misik
 
