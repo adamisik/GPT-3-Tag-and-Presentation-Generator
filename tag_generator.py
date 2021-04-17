@@ -3,8 +3,8 @@ import openai
 import json
 
 
-text = "Hello, everyone. Welcome to this introduction of Jeff Bezos. Jeff beezus is an American intrapreneur and industrialist. He is the founder and CEO of the multinational technology company. Amazon is the richest world man in the world. He was born in Albuquerque and raised in Houston major Miami, and graduated from Princeton University. He holds a degree in electrical engineering and computer science. His first job included a wall street job in a variety of fields from 1996 to 1994. He founded Amazon in 1994. On a cross country road trip from New York to Seattle company began as a bookstore and has since expanded to a wide variety of other ecommerce products and services. Amazon's currently the world's largest online sales company, the largest internet company revenue and reports largest provider of virtual assistants and cloud infrastructure services."
-API_key  = 
+text = "Hello everyone, today I want to talk to you about the charter of open AI. So one important aspect are broadly distributed benefits. So we want artificial intelligence for the benefit of all. While not enabling users of AI that may harm humanity. We also want to minimize conflicts of interests among stakeholders that could compromise our goal. Apart from that, we want long term safety. So we want you to research required to make artificial intelligence safe. And if a value aligned project reaches the goal First, we are planning on teaming up with them in order to avoid the rights. In order to achieve that, we also need technical leadership. So openly I must be on the cutting edge of AI capabilities, and also lead with the pre products. Those should, in turn be used according to our chart. Lastly, we have a cooperative orientation. So we want to actively cooperate with other research and policy institutions to create a global community working together to address API's global challenges, and provide public goods like source code."
+API_key  = "sk-F2ujjyICNEKya5l9CGSmyVBtN5xiz4eLyqvf7shJ"
 
 def description_gen(text,API_key,task,max_tokens):
   """
@@ -110,15 +110,15 @@ def description_gen(text,API_key,task,max_tokens):
   return response
 
 tags = description_gen(text,API_key, task="tag", max_tokens=7)['choices'][0]['text']
-tags  = tags.split("Text to make summary")[0]
+tags  = tags.split("Text to")[0]
 print("Generated tags:", tags)
 
 summary = description_gen(text,API_key, task="summary", max_tokens=50)['choices'][0]['text']
-summary = summary.split("Text to make summary")[0]
+summary = summary.split("Text to")[0]
 print("Generated short script summary:", summary)
 
-title = description_gen(text,API_key, task="title", max_tokens=5)['choices'][0]['text']
-title = title.split("Text to make summary")[0]
+title = description_gen(text,API_key, task="title", max_tokens=10)['choices'][0]['text']
+title = title.split("Text to")[0]
 print("Generated title:", title)
 
 generated_answers = {"Tags for text": tags,"Summary for text": summary,"Title for text": title}

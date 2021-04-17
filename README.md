@@ -1,7 +1,20 @@
-# GPT-3 Hackathon
-The official repo of team zesavi for TUM.ai's GPT-3 Hackathon.
+# GPT-3 Hackathon - Team Zesavi
+The official repo of team Zesavi for TUM.ai's GPT-3 Hackathon. The goal of this project is to use GPT-3 to generate a title, tags, short summaries and instructions based on a transcription of an educational video. This functionality enhances the user experience on the Zesavi platform.
 
-Team Members:
+## Description 
+Repository contains following functionalities:
+
+-Generate tags from text script 
+
+-Generate short summary from text script
+
+-Generate title from text script 
+
+-Generate instructions from text script 
+
+Functions are merged in `open_ai_utils.py`.
+
+## Team Members:
 
 Adam Misik
 
@@ -9,18 +22,6 @@ Jonas Jürß
 
 Pierre Toussing
 
-Adli Renhoren 
+## References 
 
-## Description 
-Repository contains following functionalities:
-
--Generate tags from text script (see `tag_generator_vUI.py`)
-
--Generate short summary from text script (see `tag_generator_vUI.py`)
-
--Generate title from text script (see `tag_generator_vUI.py`)
-
--Generate instructions from text script (see `instructions_generator.py`)
-
-
-
+Open AI API Examples: https://beta.openai.com/examples
