@@ -4,7 +4,7 @@ import json
 
 
 text = "Hello, today I want to show you how you can clear your browser cache and cookies in Google Chrome. First you select More in the top right of the window. You will find it under these three dots. Then we go under More tools and select Clear browsing data. At the top, you can choose a time range. To delete everything, we will select All time. Now, you can select additional things to delete like Cookies and other site data or Cached images and files. Just check the respective boxes. After having selected everything you want to delete, you click on Clear data. Voila, now your cache is cleared and the cookies are deleted."
-API_key  = "sk-KngzsmcU00JLEPrtIA7pkQlmkqeGaDWQfaumCHUG"
+API_key  = 
 
 def description_gen(text,API_key,task,max_tokens):
   """
