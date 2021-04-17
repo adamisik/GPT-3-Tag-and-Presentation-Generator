@@ -3,8 +3,8 @@ import openai
 import json
 
 
-text = "Hello, today I want to show you how you can clear your browser cache and cookies in Google Chrome. First you select More in the top right of the window. You will find it under these three dots. Then we go under More tools and select Clear browsing data. At the top, you can choose a time range. To delete everything, we will select All time. Now, you can select additional things to delete like Cookies and other site data or Cached images and files. Just check the respective boxes. After having selected everything you want to delete, you click on Clear data. Voila, now your cache is cleared and the cookies are deleted."
-API_key  = 
+text = "Hello, everyone. Welcome to this introduction of Jeff Bezos. Jeff beezus is an American intrapreneur and industrialist. He is the founder and CEO of the multinational technology company. Amazon is the richest world man in the world. He was born in Albuquerque and raised in Houston major Miami, and graduated from Princeton University. He holds a degree in electrical engineering and computer science. His first job included a wall street job in a variety of fields from 1996 to 1994. He founded Amazon in 1994. On a cross country road trip from New York to Seattle company began as a bookstore and has since expanded to a wide variety of other ecommerce products and services. Amazon's currently the world's largest online sales company, the largest internet company revenue and reports largest provider of virtual assistants and cloud infrastructure services."
+API_key  = "sk-KngzsmcU00JLEPrtIA7pkQlmkqeGaDWQfaumCHUG"
 
 def description_gen(text,API_key,task,max_tokens):
   """
@@ -27,27 +27,35 @@ def description_gen(text,API_key,task,max_tokens):
   openai.api_key = API_key
 
   if task=="summary":
-    prompt = "###\n"\
+    prompt = "\n"\
     "Text to make summary from:\n"\
     "\n"\
     "Hello, today I want to show you how you can configure a template button the notion. So first I created an empty page, give it a title of test page. Then we want to search for the templates button. If we have it and selected now we can configure our own template button. First we will give it a name, we'll name it add a new to do block. And then every block we want to have a header and the to do list. So we're This is the block that actually appears when we are pressing a button. So first we want header. We'll select all section header, name it's pool, block number, and then we could select the number and then we will add a to do list. Then we click on Close. So now every time we click on this add new to do block the new heading the new to do list will appear. This is how template buttons work. If we want to we configured which is press the settings and then we could add this we could probably list it for clothes. Every time we press on the button. This new block with the toggle editor that will appeal to very much.\n"\
     "\n"\
     "\n"\
     "Summary:\n"\
-    "This tutorial video shows you how to configure a template button on notion.\n"\
+    "This tutorial video shows you how to configure a template button on notion. It includes a step-by-step walkthrough for the button configuration.\n"\
     "\n"\
-    "Text to make summary of:\n"\
-     "\n" + text + "\n"\
+    "Text to make summary from:\n"\
+    "\n"\
+    "Hello everyone, today I want to talk to you about the charter of open AI. So one important aspect are broadly distributed benefits. So we want artificial intelligence for the benefit of all. While not enabling users of AI that may harm humanity. We also want to minimize conflicts of interests among stakeholders that could compromise our goal. Apart from that, we want long term safety. So we want you to research required to make artificial intelligence safe. And if a value aligned project reaches the goal First, we are planning on teaming up with them in order to avoid the rights. In order to achieve that, we also need technical leadership. So openly I must be on the cutting edge of AI capabilities, and also lead with the pre products. Those should, in turn be used according to our chart. Lastly, we have a cooperative orientation. So we want to actively cooperate with other research and policy institutions to create a global community working together to address API's global challenges, and provide public goods like source code.\n"\
+    "\n"\
     "\n"\
     "Summary:\n"\
+    "This tutorial video talks about the charter of Open AI. The core concepts behind this framework will be elaborated.\n"\
+    "\n"\
+    "Text to make summary of:\n"\
+    "\n" + text + "\n"\
+    "\n"\
+    "\nSummary:\n"
     "\n"
     response = openai.Completion.create(
-      engine="davinci-instruct-beta",
+      engine="davinci",
       prompt=prompt,
       temperature=0.6,
       max_tokens=max_tokens,
-      top_p=1.0,
-      frequency_penalty=1.0,
+      top_p=0.0,
+      frequency_penalty=0.0,
       presence_penalty=0.0)
 
   elif task=="tag":
@@ -68,10 +76,10 @@ def description_gen(text,API_key,task,max_tokens):
     response = openai.Completion.create(
     engine="davinci",
     prompt = prompt,
-    temperature=0.3,
+    temperature=0.7,
     max_tokens=max_tokens,
-    top_p=1.0,
-    frequency_penalty=0.9,
+    top_p=0.0,
+    frequency_penalty=0.0,
     presence_penalty=0.0)
 
   elif task =="title":
@@ -94,23 +102,26 @@ def description_gen(text,API_key,task,max_tokens):
     prompt=prompt,
     temperature=0.6,
     max_tokens=max_tokens,
-    top_p=0.0,
-    frequency_penalty=0.0,
+    top_p=0.5,
+    frequency_penalty=1.0,
     presence_penalty=0.0,
     )
 
   return response
 
-tags = description_gen(text,API_key, task="tag", max_tokens=10)['choices'][0]['text']
+tags = description_gen(text,API_key, task="tag", max_tokens=7)['choices'][0]['text']
+tags  = tags.split("Text to make summary")[0]
 print("Generated tags:", tags)
 
-summary = description_gen(text,API_key, task="summary", max_tokens=20)['choices'][0]['text']
+summary = description_gen(text,API_key, task="summary", max_tokens=50)['choices'][0]['text']
+summary = summary.split("Text to make summary")[0]
 print("Generated short script summary:", summary)
 
-title = description_gen(text,API_key, task="title", max_tokens=10)['choices'][0]['text']
+title = description_gen(text,API_key, task="title", max_tokens=5)['choices'][0]['text']
+title = title.split("Text to make summary")[0]
 print("Generated title:", title)
 
-generated_answers = {"Tags for text": tags,"Summary for text": description,"Title for text": title}
+generated_answers = {"Tags for text": tags,"Summary for text": summary,"Title for text": title}
 
 with open('answer.txt', 'w') as file:
-     file.write(json.dumps(generated_answers)) # use `json.loads` to do the reverse
+    file.write(json.dumps(generated_answers)) # use `json.loads` to do the reverse
