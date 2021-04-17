@@ -3,7 +3,7 @@ import openai
 import json
 
 
-text = "Hello, today I want to show you how you can configure a template button the notion. So first I created an empty page, give it a title of test page. Then we want to search for the templates button. If we have it and selected now we can configure our own template button. First we will give it a name, we'll name it add a new to do block. And then every block we want to have a header and the to do list. So we're This is the block that actually appears when we are pressing a button. So first we want header. We'll select all section header, name it's pool, block number, and then we could select the number and then we will add a to do list. Then we click on Close. So now every time we click on this add new to do block the new heading the new to do list will appear. This is how template buttons work. If we want to we configured which is press the settings and then we could add this we could probably list it for clothes. Every time we press on the button. This new block with the toggle editor that will appeal to very much."
+text = "Hello, today I want to show you how you can clear your browser cache and cookies in Google Chrome. First you select More in the top right of the window. You will find it under these three dots. Then we go under More tools and select Clear browsing data. At the top, you can choose a time range. To delete everything, we will select All time. Now, you can select additional things to delete like Cookies and other site data or Cached images and files. Just check the respective boxes. After having selected everything you want to delete, you click on Clear data. Voila, now your cache is cleared and the cookies are deleted."
 API_key  = "sk-KngzsmcU00JLEPrtIA7pkQlmkqeGaDWQfaumCHUG"
 
 def description_gen(text,API_key,task,max_tokens):
@@ -26,54 +26,91 @@ def description_gen(text,API_key,task,max_tokens):
   """
   openai.api_key = API_key
 
-  if task=="description":
-    prompt = text+"\n\nSummary: "
+  if task=="summary":
+    prompt = "###\n"\
+    "Text to make summary from:\n"\
+    "\n"\
+    "Hello, today I want to show you how you can configure a template button the notion. So first I created an empty page, give it a title of test page. Then we want to search for the templates button. If we have it and selected now we can configure our own template button. First we will give it a name, we'll name it add a new to do block. And then every block we want to have a header and the to do list. So we're This is the block that actually appears when we are pressing a button. So first we want header. We'll select all section header, name it's pool, block number, and then we could select the number and then we will add a to do list. Then we click on Close. So now every time we click on this add new to do block the new heading the new to do list will appear. This is how template buttons work. If we want to we configured which is press the settings and then we could add this we could probably list it for clothes. Every time we press on the button. This new block with the toggle editor that will appeal to very much.\n"\
+    "\n"\
+    "\n"\
+    "Summary:\n"\
+    "This tutorial video shows you how to configure a template button on notion.\n"\
+    "\n"\
+    "Text to make summary of:\n"\
+     "\n" + text + "\n"\
+    "\n"\
+    "Summary:\n"\
+    "\n"
     response = openai.Completion.create(
       engine="davinci-instruct-beta",
       prompt=prompt,
       temperature=0.6,
       max_tokens=max_tokens,
       top_p=1.0,
-      frequency_penalty=0.0,
+      frequency_penalty=1.0,
       presence_penalty=0.0)
 
   elif task=="tag":
-    prompt = text+"\n\nKeywords: "
+    prompt = "###\n"\
+    "Text to extract tags from:\n"\
+    "\n"\
+    "Hello, today I want to show you how you can configure a template button the notion. So first I created an empty page, give it a title of test page. Then we want to search for the templates button. If we have it and selected now we can configure our own template button. First we will give it a name, we'll name it add a new to do block. And then every block we want to have a header and the to do list. So we're This is the block that actually appears when we are pressing a button. So first we want header. We'll select all section header, name it's pool, block number, and then we could select the number and then we will add a to do list. Then we click on Close. So now every time we click on this add new to do block the new heading the new to do list will appear. This is how template buttons work. If we want to we configured which is press the settings and then we could add this we could probably list it for clothes. Every time we press on the button. This new block with the toggle editor that will appeal to very much.\n"\
+    "\n"\
+    "\n"\
+    "Tags:\n"\
+    "template button,configuration,notion\n"\
+    "\n"\
+    "Text to extract tags from:\n"\
+     "\n" + text + "\n"\
+    "\n"\
+    "Tags:\n"\
+
     response = openai.Completion.create(
     engine="davinci",
     prompt = prompt,
-    temperature=0.5,
+    temperature=0.3,
     max_tokens=max_tokens,
     top_p=1.0,
-    frequency_penalty=0.8,
-    presence_penalty=0.0,
-    stop=["\n"])
+    frequency_penalty=0.9,
+    presence_penalty=0.0)
 
-  elif task =="advertisement":
-    prompt="Write a creative ad for the following product to run on  platforms:\n\"\"\"\"\"\"\n"+text+"This is the ad I wrote for educational platforms:\n\"\"\"\"\"\"",
+  elif task =="title":
+    prompt="###\n"\
+    "Text to make title for:\n"\
+    "\n"\
+    "Hello, today I want to show you how you can configure a template button the notion. So first I created an empty page, give it a title of test page. Then we want to search for the templates button. If we have it and selected now we can configure our own template button. First we will give it a name, we'll name it add a new to do block. And then every block we want to have a header and the to do list. So we're This is the block that actually appears when we are pressing a button. So first we want header. We'll select all section header, name it's pool, block number, and then we could select the number and then we will add a to do list. Then we click on Close. So now every time we click on this add new to do block the new heading the new to do list will appear. This is how template buttons work. If we want to we configured which is press the settings and then we could add this we could probably list it for clothes. Every time we press on the button. This new block with the toggle editor that will appeal to very much.\n"\
+    "\n"\
+    "\n"\
+    "Title:\n"\
+    "Template button configuration on notion\n"\
+    "\n"\
+    "Text to make title for:\n"\
+     "\n" + text + "\n"\
+    "\n"\
+    "Title:\n"\
+    "\n"
     response = openai.Completion.create(
     engine="davinci-instruct-beta",
     prompt=prompt,
-    temperature=0.5,
+    temperature=0.6,
     max_tokens=max_tokens,
-    top_p=1.0,
+    top_p=0.0,
     frequency_penalty=0.0,
     presence_penalty=0.0,
-    stop=["\"\"\"\"\"\""]
     )
 
   return response
 
-tags = description_gen(text,API_key, task="tag", max_tokens=80)['choices'][0]['text']
+tags = description_gen(text,API_key, task="tag", max_tokens=10)['choices'][0]['text']
 print("Generated tags:", tags)
 
-description = description_gen(text,API_key, task="description", max_tokens=150)['choices'][0]['text']
-print("Generated description:", description)
+summary = description_gen(text,API_key, task="summary", max_tokens=20)['choices'][0]['text']
+print("Generated short script summary:", summary)
 
-advertisement = description_gen(text,API_key, task="advertisement", max_tokens=100)['choices'][0]['text']
-print("Generated ad:", advertisement)
+title = description_gen(text,API_key, task="title", max_tokens=10)['choices'][0]['text']
+print("Generated title:", title)
 
-generated_answers = {"Tags of text": tags,"Description of text": description,"Advertisement for text": advertisement}
+generated_answers = {"Tags for text": tags,"Summary for text": description,"Title for text": title}
 
 with open('answer.txt', 'w') as file:
      file.write(json.dumps(generated_answers)) # use `json.loads` to do the reverse
