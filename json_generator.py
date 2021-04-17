@@ -3,17 +3,18 @@ import openai
 import json
 
 
-text = "Hello, everyone. Welcome to this introduction of Jeff Bezos. Jeff beezus is an American intrapreneur and industrialist. He is the founder and CEO of the multinational technology company. Amazon is the richest world man in the world. He was born in Albuquerque and raised in Houston major Miami, and graduated from Princeton University. He holds a degree in electrical engineering and computer science. His first job included a wall street job in a variety of fields from 1996 to 1994. He founded Amazon in 1994. On a cross country road trip from New York to Seattle company began as a bookstore and has since expanded to a wide variety of other ecommerce products and services. Amazon's currently the world's largest online sales company, the largest internet company revenue and reports largest provider of virtual assistants and cloud infrastructure services."
+text = ""
 
-with open("OpenAICharta.json", "r") as read_file:
-   json_train_1 = json.load(read_file)
-json_train_1 = json.dumps(json_train_1)
+#with open("OpenAICharta.json", "r") as read_file:
+   #json_train_1 = json.load(read_file)
+#json_train_1 = json.dumps(json_train_1)
 
-with open("ElonMusk.json", "r") as read_file:
-   json_train_2 = json.load(read_file)
-json_train_2 = json.dumps(json_train_1)
+#with open("ElonMusk.json", "r") as read_file:
+   #json_train_2 = json.load(read_file)
+#json_train_2 = json.dumps(json_train_1)
 
-API_key  = 
+json_dict = str({"title":"The Charter of OpenAI","photo":"contract","slides":[{"title":"Broadly Distributed Benefits","points":[{"headline":"Benefit of all","icon":"everyone","summary":"Artificial Intelligence should be for the benefit of all"},{"headline":"No harm","icon":"harm","summary":"No uses of AI that enable harm to humanity should be enabled"},{"headline":"conflicts with stakeholders","icon":"stakeholder","summary":"minimize conflicts of interest among stakeholders that could compromise the goal"}]},{"title":"Long-Term Safety","points":[{"headline":"Safety","icon":"safe","summary":"Do research required to make artificial intelligence safe"},{"headline":"Cooperation","icon":"team","summary":"if a value-aligned project reaches goal first we are planning on teaming up with them"}]},{"title":"Technical Leadership","points":[{"headline":"Cutting Edge","icon":"cutting edge","summary":"OpenAI must be on cutting edge of AI capabilities"},{"headline":"Preproducts","icon":"product","summary":"We must lead with preproducts which should be used according to the charta"}]},{"title":"Cooperative Orientation","points":[{"headline":"Cooperation","icon":"cooperation","summary":"Actively cooperate with other research and policy institutions"},{"headline":"Community","icon":"community","summary":"Create a global community working together to address AGI's global challenges"},{"headline":"Public Goods","icon":"source code","summary":"provide public goods like source code"}]}]})
+API_key  = "sk-KngzsmcU00JLEPrtIA7pkQlmkqeGaDWQfaumCHUG"
 
 
 def json_gen(text,API_key,max_tokens):
@@ -40,13 +41,7 @@ def json_gen(text,API_key,max_tokens):
     "Hello everyone, today I want to talk to you about the charter of open AI. So one important aspect are broadly distributed benefits. So we want artificial intelligence for the benefit of all. While not enabling users of AI that may harm humanity. We also want to minimize conflicts of interests among stakeholders that could compromise our goal. Apart from that, we want long term safety. So we want you to research required to make artificial intelligence safe. And if a value aligned project reaches the goal First, we are planning on teaming up with them in order to avoid the rights. In order to achieve that, we also need technical leadership. So openly I must be on the cutting edge of AI capabilities, and also lead with the pre products. Those should, in turn be used according to our chart. Lastly, we have a cooperative orientation. So we want to actively cooperate with other research and policy institutions to create a global community working together to address API's global challenges, and provide public goods like source code.\n"\
     "Json file:\n"\
     "\n"\
-    "\n" + json_train_1 + "\n"\
-    "Input text:\n"\
-    "\n"\
-    "With Elon Musk. Elon Musk is a South African born American entrepreneur, and businessmen who founded x.com in 1999 x.com, later became the well known PayPal. He also founded SpaceX in 2002, and Tesla models in 2000 and free. Musk became a multimillionaire in his late 20s when he sold his startup company zip to two division of Compaq computers. Musk made headlines in May 2012, when SpaceX launched a rocket that would send the first commercial vehicle to the International Space Station. He bought his portfolio with the purchase of Solar City in 2016 cemented his standing as leader of industry by taking on an advisory role in the early days of President Donald Trump's administration. In January 2021, Musk reportedly surpassed Jeff Bezos as the wealthiest man in the world to talk about his early life. He was born on June 28 1971, in Pretoria, South Africa. This child Musk was so lost in the state rooms about invention, his parents and doctors ordered a test to check his hearing. At about the time of his parents divorce when he was 10 must develop an interest in computers. He fought himself how to program and when he was 12 he sold his software, a game he created called blaster weight school. Musk was short, in introverted and bookish. He was bullied until he was 15 and went through a growth spurt and learned how to defend himself with karate and Westlake family must mother Mae Musk is a Canadian model and the oldest one to start in the CoverGirl compact. When Musk was growing up, she worked five jobs at one point to support a family. Musk's father, he will Musk, this wealthy South African engineer must spent his early childhood with his brother Kimball and sister Tosca in South Africa. His parents divorced when he was that this was a short introduction to the life of Eden.\n"\
-    "Json file:\n"\
-    "\n"\
-    "\n" + json_train_2 + "\n"\
+    "\n" + json_dict + "\n"\
     "Input text:\n"\
     "\n" + text + "\n"\
     "Json file:\n"
@@ -54,7 +49,7 @@ def json_gen(text,API_key,max_tokens):
     response = openai.Completion.create(
     engine="davinci",
     prompt=prompt,
-    temperature=0.5,
+    temperature=0.4,
     max_tokens=max_tokens,
     top_p=1.0,
     frequency_penalty=0.0,
@@ -62,4 +57,4 @@ def json_gen(text,API_key,max_tokens):
 
     return response
 
-print(json_gen(text,API_key,max_tokens=1000)['choices'][0]['text'])
+print(json_gen(text,API_key,max_tokens=400)['choices'][0]['text'])
