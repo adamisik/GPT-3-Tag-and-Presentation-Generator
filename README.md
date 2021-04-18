@@ -14,6 +14,8 @@ Repository contains following functionalities:
 
 Functions are merged in `open_ai_utils.py`.
 
+The folder python-getting-started contains a complete django server (with some specific heroku specific files which are not required for the code to work) that handles the conversion of transcripts to presentations as well as the authentication to google. The button in `hello/templates/slideshow-api-sender.html` can be used to redirect a user to this server at `/slideshow-api/` with the required POST data. The user then grants access to google. The presentation is generated and the user is redirected.
+
 ## Team Members
 
 Adam Misik
