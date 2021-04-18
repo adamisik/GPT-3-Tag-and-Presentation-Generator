@@ -14,7 +14,7 @@ text = ""
 #json_train_2 = json.dumps(json_train_1)
 
 json_dict = str({"title":"The Charter of OpenAI","photo":"contract","slides":[{"title":"Broadly Distributed Benefits","points":[{"headline":"Benefit of all","icon":"everyone","summary":"Artificial Intelligence should be for the benefit of all"},{"headline":"No harm","icon":"harm","summary":"No uses of AI that enable harm to humanity should be enabled"},{"headline":"conflicts with stakeholders","icon":"stakeholder","summary":"minimize conflicts of interest among stakeholders that could compromise the goal"}]},{"title":"Long-Term Safety","points":[{"headline":"Safety","icon":"safe","summary":"Do research required to make artificial intelligence safe"},{"headline":"Cooperation","icon":"team","summary":"if a value-aligned project reaches goal first we are planning on teaming up with them"}]},{"title":"Technical Leadership","points":[{"headline":"Cutting Edge","icon":"cutting edge","summary":"OpenAI must be on cutting edge of AI capabilities"},{"headline":"Preproducts","icon":"product","summary":"We must lead with preproducts which should be used according to the charta"}]},{"title":"Cooperative Orientation","points":[{"headline":"Cooperation","icon":"cooperation","summary":"Actively cooperate with other research and policy institutions"},{"headline":"Community","icon":"community","summary":"Create a global community working together to address AGI's global challenges"},{"headline":"Public Goods","icon":"source code","summary":"provide public goods like source code"}]}]})
-API_key  = "sk-KngzsmcU00JLEPrtIA7pkQlmkqeGaDWQfaumCHUG"
+API_key  = 
 
 
 def json_gen(text,API_key,max_tokens):

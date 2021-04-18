@@ -4,7 +4,7 @@ import json
 
 
 text = "Hello everyone, today I want to talk to you about the charter of open AI. So one important aspect are broadly distributed benefits. So we want artificial intelligence for the benefit of all. While not enabling users of AI that may harm humanity. We also want to minimize conflicts of interests among stakeholders that could compromise our goal. Apart from that, we want long term safety. So we want you to research required to make artificial intelligence safe. And if a value aligned project reaches the goal First, we are planning on teaming up with them in order to avoid the rights. In order to achieve that, we also need technical leadership. So openly I must be on the cutting edge of AI capabilities, and also lead with the pre products. Those should, in turn be used according to our chart. Lastly, we have a cooperative orientation. So we want to actively cooperate with other research and policy institutions to create a global community working together to address API's global challenges, and provide public goods like source code."
-API_key  = "sk-F2ujjyICNEKya5l9CGSmyVBtN5xiz4eLyqvf7shJ"
+API_key  = 
 
 def description_gen(text,API_key,task,max_tokens):
   """
